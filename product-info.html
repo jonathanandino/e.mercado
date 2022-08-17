@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -32,12 +33,27 @@
           </li>
           <li class="nav-item">
           </li>
+        
         </ul>
       </div>
     </div>
   </nav>
   <main>
     <div class="container">
+
+        <div class="row">
+            <div class="col-3">
+                <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
+            </div>
+            <div class="col">
+                <div class="d-flex w-100 justify-content-between">
+                    <h4 class="mb-1">${category.name}</h4>
+                    <small class="text-muted">${category.productCount} artículos</small>
+                </div>
+                <p class="mb-1">${category.description}</p>
+            </div>
+      
+    </div>
       <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
       </div>
