@@ -193,3 +193,20 @@ a.custom-card:hover {
   color: #fff;
   margin: auto;
 }
+
+element.style {
+    background: url(*/../img/furniture_index.jpg);
+    background-color: currentcolor;
+    height: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: difference;
+}
+
+.p-4 h2{
+    color: white;
+}
+
+.p-4 p{
+    color: white;
+}
