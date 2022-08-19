@@ -1,5 +1,5 @@
 //array donde se cargarán los datos recibidos:
-let categoriesArray = [];
+let productsArray = [];
 
 
 function setProID(id) {
@@ -56,8 +56,8 @@ document.addEventListener("DOMContentLoaded", function (e){
     getJSONData(PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE).then(function(resultObj){
         if (resultObj.status === "ok")
         {
-            categoriesArray = resultObj.data;
-            showProductsList(categoriesArray);
+            productsArray = resultObj.data;
+            showProductsList(productsArray);
         }
     });
 }); 
