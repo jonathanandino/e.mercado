@@ -12,5 +12,5 @@ function comprobarValores() {
     }else{
         alert("Por favor complete los campos")
     }
-};
+}; 
 
