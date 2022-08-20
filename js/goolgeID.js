@@ -1,19 +1,6 @@
-var googleButton = document.getElementById('google-button');
-        var container = document.getElementsByClassName('container')[0];
-        var img = document.getElementsByClassName('img')[0];
-        var getName = document.getElementsByClassName('name')[0];
-        var id = document.getElementsByClassName('id')[0];
-        var email = document.getElementsByClassName('email')[0];
-
         // function to get response
         function handleCredentialResponse(response) {
             const responsePayload = decodeJwtResponse(response.credential);
-            img.src = responsePayload.picture;
-            getName.innerHTML = responsePayload.name;
-            id.innerHTML = responsePayload.sub;
-            email.innerHTML = responsePayload.email;
-            container.style.display = 'inline-block';
-            googleButton.style.display = 'none';
             localStorage.setItem("usuario", responsePayload.name);
             window.open("index.html","_self");
 
