@@ -15,10 +15,6 @@ function comprobarValores() {
 };
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
-    localStorage.setItem("usuario",profile.getName())
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    Windows.location.href("index.html")
+    localStorage.setItem("usuario",profile.getName());
+    Windows.location.href("index.html");
   }
