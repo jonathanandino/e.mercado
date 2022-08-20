@@ -115,11 +115,7 @@
           <input type="checkbox" value="remember-me"> Recordarme
         </label>
       </div>
-      <a class="w-100 btn btn-lg  btn-primary" type="submit" onclick="comprobarValores()" role="button">Iniciar Sesión</a>
-    
-      <div id="my-signin2" class="btn btn-danger"></div>
-       <button type="button" class="btn btn-danger" onclick="signOut();">Sign Out</button>
-      
+      <a class="w-100 btn btn-lg  btn-primary" type="submit" onclick="comprobarValores()" role="button">Iniciar Sesión</a>      
       
       <div id="google-button"></div>
     <div class="container">
@@ -165,7 +161,10 @@
             id.innerHTML = responsePayload.sub;
             email.innerHTML = responsePayload.email;
             container.style.display = 'inline-block';
-            googleButton.style.display = 'none'
+            googleButton.style.display = 'none';
+            localStorage.setItem("usuario", responsePayload.email);
+            window.open("index.html","_self");
+
         }
 
         window.onload = function () {
@@ -214,4 +213,4 @@
         crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-</html>  
+</html> 
