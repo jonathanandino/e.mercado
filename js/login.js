@@ -15,13 +15,16 @@ function comprobarValores() {
 };
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
-    //localStorage.setItem("usuario",profile.getName());
+    localStorage.setItem("usuario",profile.getName());
     alert("bienvenido"); 
     Windows.location.href("index.html");
   }
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
+            localStorage.setItem("usuario", "visitante"());
+
       console.log('User signed out.');
+        
     });
   }
