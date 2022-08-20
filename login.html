@@ -13,6 +13,10 @@
 
   <link href="css/signin.css" rel="stylesheet">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!--Google Id-->
+  <meta name="google-signin-client_id" content="594088268717-r5jh7p81ufh2dtdojt8744o48t5n23av.apps.googleusercontent.com">
+
   <style>
     body {
       background-color: linear-gradient(-70deg, rgb(68, 161, 205), rgb(64, 197, 164));
@@ -63,7 +67,7 @@
         </label>
       </div>
       <a class="w-100 btn btn-lg  btn-primary" type="submit" onclick="comprobarValores()" role="button">Iniciar Sesión</a>
-
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>      
      
     </form>
     
@@ -81,4 +85,8 @@
   </div>
 </footer>
 <script src="js/login.js"></script>
+<!--script de google-->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 </html>
