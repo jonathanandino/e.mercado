@@ -38,7 +38,15 @@ if (localStorage.getItem("usuario")){
 }
 // funcion para cerrar seccion quedando el usuario como visitante
 function salirUsuario(){
-    let user= 'visitante'
+    let user= 'visitante';
+    signOut();
+
     localStorage.setItem("usuario", user);
+    location.reload();
+}
+// salir de google
+function signOut() {
+    google.accounts.id.disableAutoSelect();
+    // do anything on logout
     location.reload();
 }
