@@ -15,6 +15,7 @@ function comprobarValores() {
 };
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
-    localStorage.setItem("usuario",profile.getName());
+    //localStorage.setItem("usuario",profile.getName());
+    alert("bienvenido"); 
     Windows.location.href("index.html");
   }
