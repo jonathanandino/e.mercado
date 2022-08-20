@@ -30,6 +30,7 @@ function onSignIn(googleUser) {
   }
 function init() {
   gapi.load('auth2', function() {
+      alert("Hola Init fuenciona");
     /* Ready. Make a call to gapi.auth2.init or some other API */
   });
 }
