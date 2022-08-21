@@ -51,3 +51,27 @@ document.addEventListener("DOMContentLoaded", function (e){
         }
     });
 });
+
+// Carga la imagen del titulo
+function cargarTitulo(){
+
+fetch(CATEGORIES_URL)
+.then(re => re.json())
+.then(data =>{
+    let nData = localStorage.getItem("catID")
+    let htmlTitleProductos =`
+    <style> .prod { background: url(`+data[nData-101].imgSrc+`);  
+      background-color: grey;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-blend-mode: multiply;
+      background-size: cover;
+      height: 200px;} </style>
+      <h2>`+data[nData-101].name+`</h2>
+      <p class="lead">`+data[nData-101].description+`</p>
+    `
+document.getElementById("prod").innerHTML = htmlTitleProductos
+})
+}
+
+cargarTitulo()
