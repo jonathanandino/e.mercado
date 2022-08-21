@@ -12,7 +12,7 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body>
+<body onload="cargarInicio()"">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
@@ -33,6 +33,15 @@
           </li>
           <li class="nav-item">
           </li>
+          <div class="btn-group">
+            <li type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="usuario">
+            </li>
+            <li lass="nav-item"></li>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><hr class="dropdown-divider"></li>
+              <li id="inicio"></li>                  
+            </ul>
+          </div>
         
         </ul>
       </div>
@@ -40,19 +49,7 @@
   </nav>
   <main>
     <div class="container">
-
-        <div class="row">
-            <div class="col-3">
-                <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
-            </div>
-            <div class="col">
-                <div class="d-flex w-100 justify-content-between">
-                    <h4 class="mb-1">${category.name}</h4>
-                    <small class="text-muted">${category.productCount} artículos</small>
-                </div>
-                <p class="mb-1">${category.description}</p>
-            </div>
-      
+    
     </div>
       <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
@@ -80,6 +77,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
+  <script src="js/index.js"></script>
+
 </body>
 
 </html>
