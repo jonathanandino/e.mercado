@@ -23,3 +23,4 @@ function SalidaDeGoogle(){
     google.accounts.id.disableAutoSelect();
     location.reload();
     }
+}
