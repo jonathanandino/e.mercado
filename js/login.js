@@ -14,3 +14,12 @@ function comprobarValores() {
     }
 };
 
+function SalidaDeGoogle(){
+    if(localStorage.setItem("usuario") == "visitante"){
+        signOut()
+    }
+     
+    function signOut() {
+    google.accounts.id.disableAutoSelect();
+    location.reload();
+    }

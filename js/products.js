@@ -1,5 +1,5 @@
 //array donde se cargarán los datos recibidos:
-let productsArray = [];
+let categoriesArray = [];
 
 
 function setProID(id) {
@@ -14,33 +14,23 @@ function showProductsList(array){
 
     for(let i = 0; i < array.products.length; i++) { 
         let productos = array.products[i];
-        htmlContentToAppend += `
-        <div onclick="setProID(`+productos.id+`)" class="list-group-item list-group-item-actio cursor-active">             
-            <div class="row">
-                <div class="col-3" >
-                <img src="`+productos.image+`" alt="product image" class="img-thumbnail"></img> 
-                </div>
-
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <div class="mb-1">
-                            <h4> `+ productos.name +`</h4> 
-                            <p> `+ productos.description +`</p> 
-                        </div>
-                    <small class="text-muted">` + productos.currency + " "+productos.cost +`</small> 
- 
-                    </div>
-                    </div>
-
-            </div>
-                
-            </div>
-        </div>`
         
-        document.getElementById("cat-list-products").innerHTML = htmlContentToAppend;  
+        htmlContentToAppend += `
+       
+        <div class="card cursor-active list-group-item-actio" onclick="setProID(`+productos.id+`)">
+        <img src="`+productos.image+`" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">`+productos.name+`</h5>
+          <p class="card-text">`+productos.description+`</p>
+          <h4 class="card-text">`+productos.currency+ " " + productos.cost+`</h4>
+          <p><small class="text-muted">`+productos.soldCount+` vendidos</small></p>
+        </div>
+      </div>
+    `
+    }
+        document.getElementById("products-list-container").innerHTML = htmlContentToAppend;  
 
     }  
-}
 
 
 
@@ -60,4 +50,4 @@ document.addEventListener("DOMContentLoaded", function (e){
             showProductsList(productsArray);
         }
     });
-}); 
+});
