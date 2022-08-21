@@ -29,7 +29,7 @@ nav a {
 }
 
 .jumbotron {
-  height: auto;
+  height: 50vh;
   padding: 5em inherit;
   margin-bottom: 0;
   background-color: #53C0FB;
@@ -189,24 +189,27 @@ a.custom-card:hover {
   color: orange;
 }
 
-  #usuario a{
+#usuario a{
   color: #fff;
   margin: auto;
 }
-
-element.style {
-    background: url(*/../img/furniture_index.jpg);
-    background-color: currentcolor;
-    height: auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-blend-mode: difference;
+.categ {
+  background: url(../img/furniture_index.jpg);
+  background-color: grey;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+  background-size: cover;
+  height: 200px;
 }
 
 .p-4 h2{
-    color: white;
+  color: white;
 }
 
 .p-4 p{
-    color: white;
+  color: white;
+}
+.categ.p-4 {
+  padding: 3rem!important;
 }
