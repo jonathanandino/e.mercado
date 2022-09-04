@@ -61,7 +61,9 @@ document.addEventListener("DOMContentLoaded", function (e){
 function cargarTitulo(){
     document.getElementById("sortDesc").style.display="none";
     document.getElementById("sortByCount").style.display="none";
+    document.getElementById("sortPop").style.display="none";
 
+    
 
     
 fetch(CATEGORIES_URL)
@@ -96,6 +98,9 @@ const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";
 const ORDER_BY_PROD_Cash = "Ca.";
+const ORDER_ART_VEND= "Art"
+const ORDER_DESC_ART_VEND= "DesArt"
+
 
 
 let currentProductsArray = [];
@@ -136,7 +141,27 @@ function sortProducts(criteria, array){
             if ( aCount < bCount ){ return 1; }
             return 0;
         });
+    }else if (criteria === ORDER_ART_VEND){
+        result = array.sort(function(a, b) {
+            let aCount = parseInt(a.soldCount);
+            let bCount = parseInt(b.soldCount);
+
+            if ( aCount > bCount ){ return -1; }
+            if ( aCount < bCount ){ return 1; }
+            return 0;
+        });
+    }else if (criteria === ORDER_DESC_ART_VEND){
+        result = array.sort(function(a, b) {
+            let aCount = parseInt(b.soldCount);
+            let bCount = parseInt(a.soldCount);
+
+            if ( aCount > bCount ){ return -1; }
+            if ( aCount < bCount ){ return 1; }
+            return 0;
+        });
     }
+
+
 
     return result;
 }
@@ -185,6 +210,18 @@ function sortAndShowProduct(sortCriteria, productsArray){
         document.getElementById("sortByDesC").style.display="none";
         document.getElementById("sortByCount").style.display="list-item";
     });
+
+    document.getElementById("sortMenPop").addEventListener("click", function(){
+        sortAndShowProduct(ORDER_DESC_ART_VEND);
+        document.getElementById("sortMenPop").style.display="none";
+        document.getElementById("sortPop").style.display="list-item";
+    });
+    document.getElementById("sortPop").addEventListener("click", function(){
+        sortAndShowProduct(ORDER_ART_VEND);
+        document.getElementById("sortPop").style.display="none";
+        document.getElementById("sortMenPop").style.display="list-item";
+    });
+    
 
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
         document.getElementById("rangeFilterCountMin").value = "";
