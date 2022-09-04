@@ -26,8 +26,8 @@ function cargarInicio(){
             
         }else{
 
-            var Bienvenida = '<a class="binevenida" >Usuario: '+localStorage.getItem("usuario")+' </a>'
-            botonInicio +=  '<a class="dropdown-item" onclick="salirUsuario()" >Salir</a>'        
+            var Bienvenida = '<a class="binevenida" >Usuario: <b>'+localStorage.getItem("usuario")+'</b> </a>'
+            botonInicio +=  '<a class="btn dropdown-item " onclick="salirUsuario()" >Salir</a>'        
             document.getElementById("inicio").innerHTML = botonInicio;
             document.getElementById("usuario").innerHTML = Bienvenida; 
 
