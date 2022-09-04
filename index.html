@@ -11,10 +11,13 @@
   <link href="css/styles.css" rel="stylesheet">
 
 
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body onload="cargarInicio()">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark  p-1" style="background-color:#000">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,7 +26,11 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Inicio</a>
+            <div> 
+              <a class="" href="index.html">
+              <img src="img/logo-dark.png" style="height: 40px">
+              </a>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -31,10 +38,28 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li> 
+
+          <li class="nav-item" style="margin-left: 20rem;">
+            <div class="col row" role="search">
+              <div class="col-md-10 form-outline">
+                <input class="form-control me-2 col" type="" id="searches" onkeyup="busca()" placeholder="Buscar" aria-label="Search">
+              </div> 
+                <span class="col row " id="search-addon">
+              
+                <button class="btn col row" id="search" style="align-items: center;" type="submit"> <i class="fas fa-search"></i>
+                </button-->
+              </div>
+            </li>
                 <div class="btn-group">
-                  <li type="button" class="btn btn-outline-info" data-bs-toggle="dropdown" aria-expanded="false" id="usuario">
+                  <li type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                    <svg xmlns="http://www.w3.org/2000/svg" style="color: white" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                    </svg>
                   </li>
-                  <ul class="dropdown-menu dropdown-menu-end">
+
+                  <ul class="dropdown-menu dropdown-menu-end" style="width: 250px;">
+                    <div class="alert-success"><li style="margin-left: 1em;" id="usuario"></li> </div>
                     <li><hr class="dropdown-divider"></li>
                     <li id="inicio"></li>                  
                   </ul>
@@ -43,8 +68,46 @@
       </div>
     </div>
   </nav>
-  <main>
-    <div class="jumbotron text-center"></div>
+</div>
+  <main id="main">
+    <div id="">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active carru">
+          <img src="img/cover_back.png" class="d-block w-100 crop " alt="...">
+ 
+        </div>
+        <div class="carousel-item carru">
+          <img src="img/toys_index.jpg" class="d-block w-100 imgc crop" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>JUGUETES</h1>
+            <h2>Encuentra aquí los mejores precios para niños/as de cualquier edad.</h2>
+          </div>
+        </div>
+        <div class="carousel-item carru">
+          <img src="img/furniture_index.jpg" class="d-block w-100 imgc crop" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Muebles</h1>
+            <h3>Muebles antiguos, nuevos y para ser armados por uno mismo.</h3>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    </div>
+    <!--div class="jumbotron text-center"></div-->
     <div class="album py-5 bg-light">
       <div class="container">
         <div class="row">
@@ -85,6 +148,8 @@
       </div>
     </div>
   </main>
+
+  <div id="busqueda"></div>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -96,10 +161,20 @@
     </div>
   </footer>
 
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/init.js"></script>
- 
+  <script src="js/search.js"></script>
 </body>
 
 </html>
