@@ -65,102 +65,132 @@ function cargarTitulo(){
         window.location = "product-info.html"
     }
     cargarTitulo()
-    // -----------------Comentarios desde el array-------------------
 
-    function estrellas(num){
-        var estrellas = ""
-        for(let i=0 ; i< num; i++){
-        estrellas += `<span class="fa fa-star checked"></span>`
+  
+   //---------------------- Comentarios ----------------------------------
+
+   let contenedor = document.getElementById("contenedor");
+   let item = document.getElementById("item");
+   let btnNuevoComent = document.getElementById("agregar");
+   // Recibe lo guardado en el LocalStorage
+   var guardado = JSON.parse(localStorage.getItem(localStorage.getItem("ProID")));
+   var estre = 0
+   var usuario = localStorage.getItem("usuario")
+
+   
+   // Verifica si existen datos y carga los comentarios en caso de que existan
+    function cargarLocal(){
+        // verifica que existan datos en el localStorage 
+    // Si existen llama a la funcion escribirComentario() para escribirlo en el html
+       if (guardado != null) {
+        escribirComentario(guardado);
+
         }
-        for(let i=0 ; i< 5- num; i++){
-        estrellas += `<span class="fa fa-star"></span>`
+   // En caso de que no existan comentarios crea un Array vacio
+        else {
+          guardado = [];
         }
-        return(estrellas)
+
     }
 
-    function cargarComentarios(){
-        
+   window.addEventListener('load', function(){ 
+
+    // Carga los comentario desde la API mediante el uso del Fech
+    // y llama a la funcion escribirComentario() para escribirlo en el html
     fetch(PRODUCT_INFO_COMMENTS_URL+localStorage.getItem("ProID")+EXT_TYPE)
-    .then(re => re.json())
-    .then(data =>{
+        .then(re => re.json())
+        .then(data =>{
 
-        let htmlComentsProducts =""
-        for(let i=0 ; i< data.length; i++){
-            let dato = data[i];
+            let result = [];
 
-        htmlComentsProducts +=`
-
-        <div class="card">  
-        <p class="lead">
-        <b>`+dato.user+`</b> - `+dato.dateTime+` - `+estrellas(dato.score)+`</p>
-          <p class="lead">`+dato.description+`</p>
-        </div>`
-        }
-
-    document.getElementById("contenedor").innerHTML += htmlComentsProducts;
-    })
-    }
+                result = data.sort(function(b, a) {
+                let aCount = parseInt(a.dateTime);
+                let bCount = parseInt(b.dateTime);
     
-    //----------------- comentarios ----------------------------------
+                if ( aCount > bCount ){ return -1; }
+                if ( aCount < bCount ){ return 1; }
+                return 0;
+            });
 
-    let contenedor = document.getElementById("contenedor");
-    let item = document.getElementById("item");
-    let btnNuevoComent = document.getElementById("agregar");
-    // Recibe lo guardado en el LocalStorage
-    var guardado = JSON.parse(localStorage.getItem('datos'));
-    var estre = 0
+            escribirComentario(result);
+            cargarLocal();
+        })
 
-    function cantEstrellas(num){
-        estre= num;
-    }
 
-    // Verifica si existen datos y carga los comentarios en caso de que existan
+   // Carga el comentario al Array
+   btnNuevoComent.addEventListener("click", function () {
 
-    window.addEventListener('load', function(){ 
-        cargarComentarios()
-
-        if (guardado != null) {
-            
-        for (i in guardado) {
-            var dato = guardado[i]
-            agregarComent(dato.com, dato.est, dato.fecha);
-        }
-    }
-    // En caso de que no existan comentarios crea un Array vacio
-    else {
-           guardado = [];
-    }
-    var today = new Date();
+        // Nos da la fecha y hora 
+        var today = new Date();
         var fecha = today.toLocaleString()
 
-    // Funcion que escribe el comentario
-    function agregarComent(comentario, estre, fech)
-    {   ;
+       // Verificamos que el comentario no este vacio
+       if (item.value != '') {
 
-        let nuevoComent = `
-        <div class="card">  
-        <p class="lead">
-        <b>`+localStorage.getItem("usuario")+`</b> - `+fech+` - `+estrellas(estre)+`</p>
-          <p class="lead">`+comentario+`</p>
-        </div>`
-        contenedor.innerHTML += nuevoComent
-    };
+            // crea un array vacio
+            // Le cargamos los datos del comentario ingresado
+            // Escribimos en el html mediante la funcion escribirComentario()
+            // volvemos a vaciar el array para un nuevo comentario
+           coment=[]
+           coment.push({description:item.value, dateTime:fecha, score:estre, user:usuario});
+           escribirComentario(coment);
+           coment=[];
 
-    // Carga el comentario al Array
-    btnNuevoComent.addEventListener("click", function () {
-        // Verificamos que el comentario no este vacio
-        if (item.value != '') {
-            console.log(estre);
-
-            agregarComent(item.value, estre, fecha);
-            guardado.push({com:item.value, fecha:fecha, est:estre});
-            localStorage.setItem('datos', JSON.stringify(guardado));
-            item.value = "";
-        }
-        // Si es vacía le agregamos el placeholder de invalida
-        else {
-            item.setAttribute("placeholder", "Escribe un item");
-            item.className = "error form-control";
-        }
-    });
+           // Cargamos los datos del comentario ingresado al array "guardado"
+           // Cargamos el array al localStorage con la KEY del producto
+           // y vaciamos el campo del comentario 
+           guardado.push({description:item.value, dateTime:fecha, score:estre, user:usuario});
+           localStorage.setItem(localStorage.getItem("ProID"), JSON.stringify(guardado));
+           item.value = "";
+       }
+       // Si es vacía le agregamos el placeholder de invalida
+       else {
+           item.setAttribute("placeholder", "Escribe un comentario");
+           item.className = "error form-control";
+       }
+   });
 }());
+
+//-------------Funciones extras para comentarios-----------------
+
+// Funcion que carga el numero de estrellas desde el html
+
+function cantEstrellas(num){
+    estre= num;
+}
+
+
+// Funcion que devuelve el html de estrellas dependiendo la cantedad que halla 
+function estrellas(num){
+    var estrellas = ""
+    for(let i=0 ; i< num; i++){
+    estrellas += `<span class="fa fa-star checked"></span>`
+    }
+    for(let i=0 ; i< 5- num; i++){
+    estrellas += `<span class="fa fa-star"></span>`
+    }
+    return(estrellas)
+}
+
+// Funcion que escribe los comentarios en el html tomando un array 
+function escribirComentario(data){
+
+    let htmlComentsProducts =""
+    for(let i=0 ; i< data.length; i++){
+        let dato = data[i];
+    
+    htmlComentsProducts +=`
+
+    <div class="card">
+     <div class="card">    
+        <div class="card-header">
+            `+estrellas(dato.score)+` - <b> `+dato.user+`</b> - `+dato.dateTime+` - 
+        </div>
+        <div class="card-body">   
+            <p class="card-text">`+dato.description+`</p>
+        </div>
+    </div
+    </div>
+        `
+    } document.getElementById("contenedor").innerHTML += htmlComentsProducts
+}
