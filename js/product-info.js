@@ -65,3 +65,102 @@ function cargarTitulo(){
         window.location = "product-info.html"
     }
     cargarTitulo()
+    // -----------------Comentarios desde el array-------------------
+
+    function estrellas(num){
+        var estrellas = ""
+        for(let i=0 ; i< num; i++){
+        estrellas += `<span class="fa fa-star checked"></span>`
+        }
+        for(let i=0 ; i< 5- num; i++){
+        estrellas += `<span class="fa fa-star"></span>`
+        }
+        return(estrellas)
+    }
+
+    function cargarComentarios(){
+        
+    fetch(PRODUCT_INFO_COMMENTS_URL+localStorage.getItem("ProID")+EXT_TYPE)
+    .then(re => re.json())
+    .then(data =>{
+
+        let htmlComentsProducts =""
+        for(let i=0 ; i< data.length; i++){
+            let dato = data[i];
+
+        htmlComentsProducts +=`
+
+        <div class="card">  
+        <p class="lead">
+        <b>`+dato.user+`</b> - `+dato.dateTime+` - `+estrellas(dato.score)+`</p>
+          <p class="lead">`+dato.description+`</p>
+        </div>`
+        }
+
+    document.getElementById("contenedor").innerHTML += htmlComentsProducts;
+    })
+    }
+    
+    //----------------- comentarios ----------------------------------
+
+    let contenedor = document.getElementById("contenedor");
+    let item = document.getElementById("item");
+    let btnNuevoComent = document.getElementById("agregar");
+    // Recibe lo guardado en el LocalStorage
+    var guardado = JSON.parse(localStorage.getItem('datos'));
+    var estre = 0
+
+    function cantEstrellas(num){
+        estre= num;
+    }
+
+    // Verifica si existen datos y carga los comentarios en caso de que existan
+
+    window.addEventListener('load', function(){ 
+        cargarComentarios()
+
+        if (guardado != null) {
+            
+        for (i in guardado) {
+            var dato = guardado[i]
+            agregarComent(dato.com, dato.est, dato.fecha);
+        }
+    }
+    // En caso de que no existan comentarios crea un Array vacio
+    else {
+           guardado = [];
+    }
+    var today = new Date();
+        var fecha = today.toLocaleString()
+
+    // Funcion que escribe el comentario
+    function agregarComent(comentario, estre, fech)
+    {   ;
+
+        let nuevoComent = `
+        <div class="card">  
+        <p class="lead">
+        <b>`+localStorage.getItem("usuario")+`</b> - `+fech+` - `+estrellas(estre)+`</p>
+          <p class="lead">`+comentario+`</p>
+        </div>`
+        contenedor.innerHTML += nuevoComent
+    };
+
+    // Carga el comentario al Array
+    btnNuevoComent.addEventListener("click", function () {
+        // Verificamos que el comentario no este vacio
+        if (item.value != '') {
+            console.log(estre);
+
+            agregarComent(item.value, estre, fecha);
+            guardado.push({com:item.value, fecha:fecha, est:estre});
+            localStorage.setItem('datos', JSON.stringify(guardado));
+            item.value = "";
+        }
+        // Si es vacía le agregamos el placeholder de invalida
+        else {
+            item.setAttribute("placeholder", "Escribe un item");
+            item.className = "error form-control";
+        }
+    });
+}());
