@@ -1,10 +1,11 @@
-function cargarTitulo(){
-
+window.addEventListener('load', function(){ 
+   
     fetch(PRODUCT_INFO_URL+ localStorage.getItem("ProID") +EXT_TYPE)
     .then(re => re.json())
     .then(data =>{
         let img = data.images;        
-        
+        // Funcion que escribe la informacion del producto en el html
+
       let  datos =`
 
                   <div class="single-product-details">
@@ -14,14 +15,17 @@ function cargarTitulo(){
                     <p class="product-description mt-20">`+data.description+`</p>
                     <div class="product-category" style="color:grey"> Categoria: <b>`+data.category+`</b></div><br>
                     <div class="text-center" 
-                    <div ><button type="button" class="btn btn-outline-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                    <div ><button type="button" class="zoom btn btn-outline-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                  </svg>  Añadir al carrito</button><a href="" style="background-color:black; color:white" class="btn"><b>Comprar</b></a></div>
+                  </svg>  Añadir al carrito</button><a href="" style="background-color:black; color:white" class="zoom btn"><b>Comprar</b></a></div>
                     </div>
                     </div>
                 
         `
-
+        // Utilizamos un bucle for para cargar las imagenes al carrusel
+        // Se escriven los botones en la variable bton y las imagenes en la varible cargaImagenes
+        // Tambien utilizamos la variable active para activar(mostrar como primera imagen) la primera imagen que se carge 
+        // luego del primer bucle la active nos da un valor vacio, para que solo quede una sola imagen activada 
     let cargaImagenes = ""
     let boton =""
     let active = "active"
@@ -40,7 +44,7 @@ function cargarTitulo(){
         let relacionado = dat[i];
 
         rel += `
-        <div class="col-md-5 card cursor-active list-group-item-actio" onclick="setProID(`+relacionado.id+`)">
+        <div class="zoom col-md-4 card cursor-active list-group-item-actio" onclick="setProID(`+relacionado.id+`)">
             <div class="product-item card h-100">
                 <div class="product-thumb">
                     <img class="card-img-top" src="`+relacionado.image+`" alt="product-img" />
@@ -50,7 +54,8 @@ function cargarTitulo(){
                 <h4>`+relacionado.name+`</h4>
             </div>
             </div>
-        </div>`
+        </div>
+`
     }
      
     document.getElementById("dato").innerHTML = datos;
@@ -58,13 +63,12 @@ function cargarTitulo(){
     document.getElementById("bot").innerHTML = boton;
     document.getElementById("carr").innerHTML = cargaImagenes;
     })
-    }
+    })
     
     function setProID(id) {
         localStorage.setItem("ProID", id);
         window.location = "product-info.html"
     }
-    cargarTitulo()
 
   
    //---------------------- Comentarios ----------------------------------
@@ -100,7 +104,7 @@ function cargarTitulo(){
     fetch(PRODUCT_INFO_COMMENTS_URL+localStorage.getItem("ProID")+EXT_TYPE)
         .then(re => re.json())
         .then(data =>{
-
+            
             let result = [];
 
                 result = data.sort(function(b, a) {
@@ -122,7 +126,10 @@ function cargarTitulo(){
 
         // Nos da la fecha y hora 
         var today = new Date();
-        var fecha = today.toLocaleString()
+        var fecha = today.toISOString().split('T')[0] +" "+ today.toLocaleTimeString();
+
+
+        //anno mes dia hora
 
        // Verificamos que el comentario no este vacio
        if (item.value != '') {
@@ -149,7 +156,7 @@ function cargarTitulo(){
            item.className = "error form-control";
        }
    });
-}());
+});
 
 //-------------Funciones extras para comentarios-----------------
 
