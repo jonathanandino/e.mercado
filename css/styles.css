@@ -219,14 +219,18 @@ a.custom-card:hover {
   background-repeat: no-repeat;
   background-blend-mode: multiply;
   background-size: cover;
-  height: 200px;
-}
+  height: auto;
 
+ ;
+}
+#bot{
+  display:flex;
+}
 #carrusel{
 
   object-position:100%0;
-  width:300px;
-  height:337px;
+  width:auto;
+  height:auto;
 
 
   background-color: grey;
@@ -234,28 +238,7 @@ a.custom-card:hover {
   background-repeat: no-repeat;
   background-blend-mode: multiply;
   background-size: cover;
-  height: 300px;
-}
-
-imgc.{
-  max-width:100%;
-max-height:100%;
-
-}
-.carru {
-  width: 200px;
-  height: 350px;
-  position: relative;
-}
-.carru > .crop {
-  position:absolute;
-  left: -100%;
-  right: -100%;
-  top: -100%;
-  bottom: -100%;
-  margin: auto;
-  min-height: 100%;
-  min-width: 100%;
+  height: auto;
 }
 
 .fas {
@@ -271,42 +254,84 @@ color: #fff;
   background-size: cover;
 }
 
-
-
-
-
-#form {
-  width: 250px;
-  margin: 0 auto;
-  height: 50px;
+.zoom {
+  transition: transform .2s; /* Animation */
 }
 
-#form p {
+.zoom:hover {
+  transform: scale(1.05); /* (105% zoom) */
+}
+
+/* -------------------Modal---------------- */
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* Modal (background) */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.9);
+}
+
+/* Imagen del modal*/
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 880px;
+}
+
+/* Animacion - Zoom Modal */
+.modal-content, #caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* Boton cerrar */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
-#form label {
-  font-size: 20px;
-}
-
-input[type="radio"] {
-  display: none;
-}
-
-label {
-  color: grey;
-}
-
-.clasificacion {
-  direction: rtl;
-  unicode-bidi: bidi-override;
-}
-
-label:hover,
-label:hover ~ label {
-  color: orange;
-}
-
-input[type="radio"]:checked ~ label {
-  color: orange;
-}
