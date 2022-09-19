@@ -12,15 +12,15 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
     document.getElementById("Peugeot208").addEventListener("click", function() {
-            localStorage.setItem("proID", 50924);
+            localStorage.setItem("ProID", 50924);
             window.location = "product-info.html"
         });
     document.getElementById("BMX").addEventListener("click", function() {
-            localStorage.setItem("proID", 50744);
+            localStorage.setItem("ProID", 50744);
             window.location = "product-info.html"
         });
     document.getElementById("PS5").addEventListener("click", function() {
-            localStorage.setItem("proID", 50743);
+            localStorage.setItem("ProID", 50743);
             window.location = "product-info.html"
         });
 });
