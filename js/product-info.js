@@ -1,3 +1,5 @@
+var modalImag = [];
+
 window.addEventListener('load', function(){ 
    
     fetch(PRODUCT_INFO_URL+ localStorage.getItem("ProID") +EXT_TYPE)
@@ -30,10 +32,13 @@ window.addEventListener('load', function(){
     let boton =""
     let active = "active"
      for(let i=0 ; i<img.length ;i++){
+
         let imagen = img[i];
+        modalImag.push(imagen);
+
         cargaImagenes += `
-        <div class="carousel-item `+active+`">
-        <img src="`+imagen+`" class="d-block w-100" alt="..."></div>`
+        <div onclick="modalImagenes(`+i+`)" class="carousel-item `+active+`">
+        <img src="`+imagen+`" class="d-block w-100" alt="..." type="button"></div>`
         boton += `
         <button type="button" class="`+active+`" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="`+i+`" aria-label="Slide `+i+1+`"></button>`
         active = "" 
@@ -57,7 +62,7 @@ window.addEventListener('load', function(){
         </div>
 `
     }
-     
+     console.log(modalImag)
     document.getElementById("dato").innerHTML = datos;
     document.getElementById("rela").innerHTML= rel;
     document.getElementById("bot").innerHTML = boton;
@@ -201,3 +206,36 @@ function escribirComentario(data){
         `
     } document.getElementById("contenedor").innerHTML += htmlComentsProducts
 }
+
+//----------------------Modal Imagenes----------------------
+function modalImagenes(act){
+document.getElementById("bot").style.display = "none";
+
+var modal = document.getElementById("myModal");
+var modalImg = document.getElementById("carruselModal");
+
+// Bucle que escribe el carrucel del modal 
+var carru = ""
+    for(let i=0 ; i< modalImag.length; i++){
+        let imag = modalImag[i];
+        let active ="";
+
+        if (i== act){ active= "active"};
+        carru += `
+        <div class="carousel-item `+active+`">
+            <img src="`+imag+`" class="d-block w-100" alt="...">
+        </div>`;
+    }
+    // muestra el modal y escribe las imagenes
+  modal.style.display = "block";
+  modalImg.innerHTML = carru;
+
+  // Boton cerrar modal
+var span = document.getElementsByClassName("close")[0];
+
+// Funcion que al darle click a cerrar esconde el modal
+span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("bot").style.display = "flex";
+
+}}
