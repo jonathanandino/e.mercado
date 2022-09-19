@@ -35,7 +35,7 @@ function comprobarValores() {
 
         // Si no existe correo electronico muestra la alerta de error
         }else{
-            error("Introdusca un <strong>Correo electornico</strong> valido");
+            error("Introduzca un <strong>Correo electornico</strong> valido");
             impContrasena.classList.remove("alert-danger");
             impContrasena.classList.remove("border-danger");
 
@@ -43,13 +43,13 @@ function comprobarValores() {
 
         // Verifica que el imput de correo no este vacio 
     }else if(usuario.length > 0){
-        error("Introdusca un <strong>contraseña</strong>");
+        error("Introduzca un <strong>contraseña</strong>");
         impUsuario.classList.remove("alert-danger");
         impUsuario.classList.remove("border-danger");
 
         // Verifica que el imput de contrasenna no este vacio 
     }else if(contra.length > 0){
-        error("Introdusca un <strong>Correo electronico</strong>");
+        error("Introduzca un <strong>Correo electronico</strong>");
         impContrasena.classList.remove("alert-danger");
         impContrasena.classList.remove("border-danger");
 
