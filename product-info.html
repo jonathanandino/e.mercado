@@ -10,7 +10,43 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <style>
+              #form {
+              width: 250px;
+              margin: 0 auto;
+              height: 50px;
+              }
 
+              #form p {
+                text-align: center;
+              }
+
+              #form label {
+                font-size: 20px;
+              }
+
+              input[type="radio"] {
+                display: none;
+              }
+
+              label {
+                color: grey;
+              }
+
+              .clasificacion {
+                direction: rtl;
+                unicode-bidi: bidi-override;
+              }
+
+              label:hover,
+              label:hover ~ label {
+                color: orange;
+              }
+
+              input[type="radio"]:checked ~ label {
+                color: orange;
+              }
+  </style>
 </head>
 
 <body onload="cargarInicio()">
@@ -23,42 +59,56 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
-          <div> 
+          <div class="zoom"> 
             <a class="" href="index.html">
             <img src="img/logo-dark.png" style="height: 40px">
             </a>
           </div>
-          <li class="nav-item">
+          <li class="zoom nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
           </li>
-          <li class="nav-item">
+          <li class="zoom nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item" style="margin-left: 20rem;">
+          <li  style="width:300px;"></li>
+
+          <li class="nav-item">
             <div class="col row" role="search">
               <div class="col-md-10 form-outline">
-                <input class="form-control me-2 col" type="" id="searches" onkeyup="busca()" placeholder="Buscar" aria-label="Search">
+                <input class="zoom form-control me-2 col" type="" id="searches" onkeyup="busca()" placeholder="Buscar" aria-label="Search">
               </div> 
                 <span class="col row " id="search-addon">
               
-                <button class="btn col row" id="search" style="align-items: center;" type="submit"> <i class="fas fa-search"></i>
+                <button class="zoom btn col row" id="search" style="align-items: center;" type="submit"> <i class="fas fa-search"></i>
                 </button-->
               </div>
+              <li  style="width:50px;"></li>
+           
             </li>
                 <div class="btn-group">
-                  <li type="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                    <svg xmlns="http://www.w3.org/2000/svg" style="color: white" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <li class="zoom" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                    <svg xmlns="http://www.w3.org/2000/svg" style="color: white; margin: 2px" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                       <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                       <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                     </svg>
                   </li>
 
-                  <ul class="dropdown-menu dropdown-menu-end" style="width: 250px;">
-                    <div class="alert-success"><li style="margin-left: 1em;" id="usuario"></li> </div>
+                  <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" style="width: 250px; background-color: black; color: white;">
+                    <div class="alert-light"><li style="margin-left: 1em;" id="usuario"></li> </div>
                     <li><hr class="dropdown-divider"></li>
+                    <li><a class="btn btn-dark dropdown-item" href="my-profile.html">
+                      <svg xmlns="http://www.w3.org/2000/svg" style="color: white; margin: 0px" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 448 512">
+                       <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>                      
+                      </svg> Mi perfil</a>
+                    </li>  
+                    <li><a class="btn btn-dark dropdown-item" href="cart.html">
+                          <svg xmlns="http://www.w3.org/2000/svg" style="color: white; margin: 0px" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                          </svg> Mi carrito</a>
+                    </li>                  
                     <li id="inicio"></li>                  
-            </ul>
-          </div>
+                  </ul>
+                </div>
         
         </ul>
       </div>
@@ -118,8 +168,8 @@
                           <div class="col">
                           <h3><form id="calif">
                             <p class="clasificacion">
-                              <a href="" id="agregar" style="background-color:black; color:white; margin-left: 2rem;" class="btn"><b>Publicar</b></a>
-                                <input id="radio1" type="radio" name="estrellas" onclick="cantEstrellas(5)" value="5"><!--
+                              <a href="" class="zoom btn btn-dark" id="agregar" style="background-color:black; color:white; margin-left: 2rem;" class="btn"><b>Publicar</b></a>
+                                <input  id="radio1" type="radio" name="estrellas" onclick="cantEstrellas(5)" value="5"><!--
                               --><label for="radio1">★</label><!--
                               --><input id="radio2" type="radio" name="estrellas"  onclick="cantEstrellas(4)" value="4"><!--
                               --><label for="radio2">★</label><!--
@@ -162,9 +212,33 @@
           </div>
         </div>
       </section>
-  </main>
+
+<!----------------- Modal ---------------------->
+<div id="myModal" class="modal">
+
+  <!-- Boton cerrar  -->
+  <span class="close">&times;</span>
+
+  <!-- Carrusel de imagenes -->
+  <div class="modal-content" id="img01">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner" id="carruselModal">
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+      </div>
+  </div>
+</div>
+
+</main>
   <div id="busqueda"></div>
-  <footer class="text-muted">
+<footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
