@@ -84,7 +84,8 @@ window.addEventListener('load', function(){
    // Recibe lo guardado en el LocalStorage
    var guardado = JSON.parse(localStorage.getItem(localStorage.getItem("ProID")));
    var estre = 0
-   var usuario = localStorage.getItem("usuario")
+   var usuario = JSON.parse(localStorage.getItem("usuario"));
+
 
    
    // Verifica si existen datos y carga los comentarios en caso de que existan
@@ -144,14 +145,14 @@ window.addEventListener('load', function(){
             // Escribimos en el html mediante la funcion escribirComentario()
             // volvemos a vaciar el array para un nuevo comentario
            coment=[]
-           coment.push({description:item.value, dateTime:fecha, score:estre, user:usuario});
+           coment.push({description:item.value, dateTime:fecha, score:estre, user:usuario[0].name});
            escribirComentario(coment);
            coment=[];
 
            // Cargamos los datos del comentario ingresado al array "guardado"
            // Cargamos el array al localStorage con la KEY del producto
            // y vaciamos el campo del comentario 
-           guardado.push({description:item.value, dateTime:fecha, score:estre, user:usuario});
+           guardado.push({description:item.value, dateTime:fecha, score:estre, user:usuario[0].name});
            localStorage.setItem(localStorage.getItem("ProID"), JSON.stringify(guardado));
            item.value = "";
        }
@@ -208,6 +209,7 @@ function escribirComentario(data){
 }
 
 //----------------------Modal Imagenes----------------------
+
 function modalImagenes(act){
 document.getElementById("bot").style.display = "none";
 
