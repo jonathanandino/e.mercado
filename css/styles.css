@@ -226,6 +226,18 @@ a.custom-card:hover {
 #bot{
   display:flex;
 }
+
+.card{
+  z-index:4 !important;
+  position: inherit !important;
+}
+
+/* Carrusel */
+.carousel-control-prev-icon,
+.carousel-control-prev, 
+.carousel-control-next{
+  z-index: 999 !important;
+}
 #carrusel{
 
   object-position:100%0;
@@ -334,4 +346,26 @@ color: #fff;
   display: inline-block;
   font-size: 16px;
 }
+
+/*  navbar que que desaparece */
+#navbar1{
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+}
+#navbar {
+  z-index:1 !;
+  background-color: #333; 
+  position: fixed;
+  top: -50px;
+  width: 100%; 
+  transition: top 0.3s;
+}
+
+.navIni::placeholder {
+  color: white !important;
+  font-weight: bold;
+}
+
+
 
