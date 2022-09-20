@@ -99,4 +99,4 @@ function cargarInicio(){
   function signOut() {
       google.accounts.id.disableAutoSelect();
       location.reload();
-}
+} 
