@@ -2,6 +2,8 @@
         function handleCredentialResponse(response) {
             const responsePayload = decodeJwtResponse(response.credential);
             localStorage.setItem("usuario", responsePayload.name);
+            localStorage.setItem("imag", responsePayload.picture);
+
             window.open("index.html","_self");
 
         }
