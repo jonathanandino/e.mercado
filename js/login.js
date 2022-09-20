@@ -30,7 +30,9 @@ function comprobarValores() {
         // Y redirecciona al index    
         var email_analizado = /^([^]+)@(\w+).(\w+)$/.exec(usuario);
         var [,nombre,servidor,dominio] = email_analizado;
-        localStorage.setItem("usuario", nombre);
+        user = [];
+        user.push({name:nombre});
+        localStorage.setItem("usuario", JSON.stringify(user));
         window.location.href = "index.html"
 
         // Si no existe correo electronico muestra la alerta de error

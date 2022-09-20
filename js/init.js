@@ -51,19 +51,34 @@ function cargarInicio(){
           botonInicio += '<a class=" btn-primary" href="login.html" role="button">Iniciar Secion</a>'
           document.getElementById("usuario").innerHTML = botonInicio;  
           
+          
       }else{
-
-          var Bienvenida = '<a class="" >Usuario: <b>'+localStorage.getItem("usuario")+'</b> </a>'
-          botonInicio +=  `
-          <a class="btn dropdown-item" onclick="salirUsuario()" >        <svg xmlns="http://www.w3.org/2000/svg" style="color: white; margin: 0px" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 576 512">
-          <path d="M534.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L434.7 224 224 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM192 96c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-53 0-96 43-96 96l0 256c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>         
-          </svg>  Cerrar sesión</a>`        
-          document.getElementById("inicio").innerHTML = botonInicio;
+          var usuario = JSON.parse(localStorage.getItem("usuario"));
+            if (usuario[0].picture){
+              var picture = `<img src="`+usuario[0].picture+`" width="40" height="40" class="zoom rounded-circle">`
+              document.getElementById("picture").innerHTML = picture;
+              if(document.getElementById("usuario1")){
+                document.getElementById("picture1").innerHTML = picture;
+                }
+            }else{
+              var picture = `
+              <li class="zoom" type="button" aria-expanded="false" >
+              <svg xmlns="http://www.w3.org/2000/svg" style="color:white; margin: 2px" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              </svg>
+            </li>`
+            document.getElementById("picture").innerHTML = picture;
+            if(document.getElementById("usuario1")){
+              document.getElementById("picture1").innerHTML = picture;
+              }
+            }
+          var Bienvenida = '<a class="" >Usuario: <b>'+usuario[0].name+'</b> </a>'
+   
           document.getElementById("usuario").innerHTML = Bienvenida;
           
-          if(document.getElementById("inicio1")){
-            document.getElementById("inicio1").innerHTML = botonInicio;
-            document.getElementById("usuario1").innerHTML = Bienvenida; 
+          if(document.getElementById("usuario1")){
+            document.getElementById("usuario1").innerHTML = Bienvenida;
             }
 
 
