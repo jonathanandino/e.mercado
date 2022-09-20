@@ -233,11 +233,6 @@ a.custom-card:hover {
 }
 
 /* Carrusel */
-.carousel-control-prev-icon,
-.carousel-control-prev, 
-.carousel-control-next{
-  z-index: 999 !important;
-}
 #carrusel{
 
   object-position:100%0;
