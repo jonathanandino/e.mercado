@@ -46,7 +46,7 @@ nav a {
     padding-top: 6rem;
     padding-bottom: 6rem;
   }
-}
+  }
 
 .jumbotron p:last-child {
   margin-bottom: 0;
@@ -189,10 +189,10 @@ a.custom-card:hover {
   color: orange;
 }
 
-#usuario a{
+/*#usuario a{
   color: black;
   margin: auto;
-}
+}*/
 .categ {
   background: url(../img/furniture_index.jpg);
   background-color: grey;
@@ -341,25 +341,100 @@ color: #fff;
   font-size: 16px;
 }
 
-/*  navbar que que desaparece */
-#navbar1{
-  position: absolute;
-  z-index: 2;
-  width: 100%;
+/* ///// Configuracion de la navbar ///// */
+.navbar1{
+  background-color: black !important; 
+  transition: all, 1.2s;
 }
 #navbar {
-  z-index:1 !;
-  background-color: #333; 
+  z-index: 990;
+  background-color: transparent; 
   position: fixed;
-  top: -50px;
   width: 100%; 
-  transition: top 0.3s;
+  transition: all, 1.2s;
+}
+.form-outline .searchEffectInit{
+  width: 150%;
+  position: relative;
+  background-color: transparent ;
+  transition: all 1.2s ;
+}
+.searchEffect{
+  width: 100% ;
+  background-color: white;
+  transition: all 1.2s !important;
 }
 
-.navIni::placeholder {
-  color: white !important;
-  font-weight: bold;
+.searchEffect::placeholder{
+color: black ;
+transition: all 1.2s;
+}
+.searchEffectInit::placeholder{
+  color: #fff !important;
+  text-align: center;
+  font-weight: 550;
+  transition: all 1.2s ;
+  }
+.nav-item{
+  color: white;
 }
 
+@media (max-width: 768px){
+  #navbar{
+    background-color: black;
+    position: initial;
+  }
+  .nav-item{
+    text-align: center;
+    align-items: center;
+  }
+  .form-outline{
+    width: 85% !important;
+  }
+  #search-addon{
+    width: 15% !important;
+  }
+}
 
+@media (min-width: 768px) {
+  #navbar{
+    height: 50px;
+  }
+}
 
+/* notificacion numerica */
+
+.badge {
+  z-index: 990;
+  position: absolute;
+  top: 40px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+
+/*filtros */
+
+@media (max-width: 768px){
+  #navbar{
+    background-color: black;
+    position: initial;
+  }
+  .nav-item{
+    text-align: center;
+    align-items: center;
+  }
+  .form-outline{
+    width: 85% !important;
+  }
+  #search-addon{
+    width: 15% !important;
+  }
+}
+
+@media (min-width: 768px) {
+  #navbar{
+    height: 50px;
+    flex-wrap: wrap;
+  }
+}
