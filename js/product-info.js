@@ -201,7 +201,7 @@ document.getElementById("cart").addEventListener("click", function(){
     var cart = [];
     contador += 1
     document.getElementById("miCarrito").innerHTML =  `<span class="badge">`+contador+`</span>`;
-    document.getElementById("menuImg").innerHTML += `<span class="badge">`+contador+`</span>`;
+    document.getElementById("picture").innerHTML += `<span class="badge">`+contador+`</span>`;
     var cant = document.getElementById("cant").value;
 
     if (localStorage.getItem("cart")){

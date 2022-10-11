@@ -117,14 +117,14 @@ function myFunction(x) {
 
   if (x.matches) { // If media query matches
     div2.appendChild(user)
-    mostrarNavbar( window.matchMedia("(max-width: 768px)").matches)
+    mostrarNavbar( window.matchMedia("(max-width: 991px)").matches)
  }else{
     div1.appendChild(user)
-    mostrarNavbar( window.matchMedia("(max-width: 768px)").matches)
+    mostrarNavbar( window.matchMedia("(max-width: 991px)").matches)
  }
 }
 
-var x = window.matchMedia("(max-width: 768px)")
+var x = window.matchMedia("(max-width: 9991px)")
 
 myFunction(x) // Call listener function at run time
 x.addListener(myFunction)
@@ -151,5 +151,5 @@ function busquedaIndex(){ // Cambia de color la navbar al escribir en el buscado
 function scrollFunction() { // cambia de color la navbar haciendo scroll
 
   let input = document.getElementById('searches').value;
-  mostrarNavbar(document.body.scrollTop > 50 || document.documentElement.scrollTop > 50 || input.length > 0 || window.matchMedia("(max-width: 768px)").matches);    
+  mostrarNavbar(document.body.scrollTop > 50 || document.documentElement.scrollTop > 50 || input.length > 0 || window.matchMedia("(max-width: 991px)").matches);    
 }
