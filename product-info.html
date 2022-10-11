@@ -50,66 +50,84 @@
 </head>
 
 <body onload="cargarInicio()">
-
-  <nav class="navbar navbar-expand-lg navbar-dark  p-1" style="background-color:#000">
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark p-1" style="background-color:#000; position: absolute">
     <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
-          <div class="zoom"> 
-            <a class="" href="index.html">
-            <img src="img/logo-dark.png" style="height: 40px">
-            </a>
-          </div>
-          <li class="zoom nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
+          <li class="nav-item">
+            <div class="zoom"> 
+              <a class="" href="index.html">
+                <img src="img/logo-dark.png" style="height: 40px">
+              </a>
+            </div>
           </li>
-          <li class="zoom nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="categories.html">Categorías</a>
           </li>
+
+          <li class="nav-item">
+            <a class="zoom nav-link" href="sell.html">Vender</a>
+          </li>
+
           <li  style="width:300px;"></li>
 
           <li class="nav-item">
             <div class="col row" role="search">
               <div class="col-md-10 form-outline">
-                <input class="zoom form-control me-2 col" type="" id="searches" onkeyup="busca()" placeholder="Buscar" aria-label="Search">
+                <input class="zoom form-control me-2 col" id="searches" onkeyup="busca()" placeholder="Buscar" aria-label="Search">
               </div> 
                 <span class="col row " id="search-addon">
-              
-                <button class="zoom btn col row" id="search" style="align-items: center;" type="submit"> <i class="fas fa-search"></i>
-                </button-->
-              </div>
-              <li  style="width:50px;"></li>
-           
-            </li>
-            <div class="btn-group">
-              <div id="picture" data-bs-toggle="dropdown">
+                <button class="zoom btn col row" id="search" style="align-items: center;" type="submit"> <i class="fas fa-search"></i></button>
+            </div>
+          </li>
+
+          <li  style="width:50px;"></li>
+          <div class="btn-group row">
+            
+            <div class="row mb-3" data-bs-toggle="dropdown" style="margin-top: 2%;">
+              <div class="col-1 zoom" id="picture"></div>
+              <div id="usuarioMg" value="1" style="margin-top: 2%;" class="col-8"></div>
+            </div>
+
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" style="opacity: 0.7; width: 500px; background-color: black; color: white;">
+              <div id="usuarioLg">
+                <li class="usuario"style="margin-left: 1em;" id="usuario"></li> 
               </div>
 
-              <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" style="width: 250px; background-color: black; color: white;">
-                <div class="alert-light"><li style="margin-left: 1em;" id="usuario"></li> </div>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="btn btn-dark dropdown-item" href="my-profile.html">
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+
+              <li>
+                <a class="btn btn-dark dropdown-item" href="my-profile.html">
                   <svg xmlns="http://www.w3.org/2000/svg" style="color: white; margin: 0px" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 448 512">
-                   <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>                      
-                  </svg> Mi perfil</a>
-                </li>  
-                <li><a class="btn btn-dark dropdown-item" href="cart.html">
-                      <svg xmlns="http://www.w3.org/2000/svg" style="color: white; margin: 0px" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                      </svg> Mi carrito</a>
-                </li>                  
-                <li>
-                  <a class="btn dropdown-item" onclick="salirUsuario()" >        <svg xmlns="http://www.w3.org/2000/svg" style="color: white; margin: 0px" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 576 512">
+                    <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>                      
+                  </svg> Mi perfil
+                </a>
+              </li>  
+
+              <li>
+                <a class="btn btn-dark dropdown-item" href="cart.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" style="color: white; margin: 0px" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                  </svg> Mi carrito<span id="miCarrito"></span>
+                </a>
+              </li>
+
+              <li>
+                <a class="btn dropdown-item" onclick="salirUsuario()" >        
+                  <svg xmlns="http://www.w3.org/2000/svg" style="color: white; margin: 0px" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 576 512">
                     <path d="M534.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L434.7 224 224 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM192 96c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-53 0-96 43-96 96l0 256c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>         
-                    </svg>  Cerrar sesión</a>
-                </li>                  
-              </ul>
-            </div>
-        
+                  </svg>  Cerrar sesión
+                </a>
+              </li>                  
+            </ul>
+          </div>
         </ul>
       </div>
     </div>
@@ -117,15 +135,11 @@
   <main id="main">
     <br><br>
     <div class="container">
-
-
       <section class="single-product">
         <div class="container">
-
           <div class="row mt-20">
             <div class="col-md-8">
               <div class="single-product-slider">
-
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
                   <div class="carousel-indicators" id="bot"> </div>
                   <div class="carousel-inner" id="carr"> </div>
@@ -134,6 +148,7 @@
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                   </button>
+
                   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
@@ -141,61 +156,71 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4" id="dato">
-      
-              </div>
-            </div>
-          </div>
-          <br>
-            <hr class="my-1">
-          <div class="row d-flex justify-content-center">
-            <div class="col-md-10 ">
-             <br>
-              <h4 class="">Comentarios:</h4>              
-                <div class="">
-                  <div class="border rounded-3 cont">
-                    <div class="list-group" id="contenedor">
-                    </div>
-                  </div>
-                  <div class="col-xs-20">
+            <div class="col-md-4" >
+              <div id="dato"></div>
+                <div class="input-group input-number-group">
+                  <p> Cantidad: <p>
+                  <input id="cant" class="input-number" type="number" value="1" min="0" max="1000" style="margin-left: 10px;height: 30px; width: 45px;">
+                </div> <br>
 
-                    <div class="row my-4">
-                      <div class="container">
-                        <label for="Item" class="form-label"><h4>Comentar</h4></label>
-                        <input type="text" class="form-control"  style="height:70px" id="item">
-                        <br>
-                        <div class="d-grid raw">
-                          <div class="col">
-                          <h3><form id="calif">
-                            <p class="clasificacion">
-                              <a href="" class="zoom btn btn-dark" id="agregar" style="background-color:black; color:white; margin-left: 2rem;" class="btn"><b>Publicar</b></a>
-                                <input  id="radio1" type="radio" name="estrellas" onclick="cantEstrellas(5)" value="5"><!--
-                              --><label for="radio1">★</label><!--
-                              --><input id="radio2" type="radio" name="estrellas"  onclick="cantEstrellas(4)" value="4"><!--
-                              --><label for="radio2">★</label><!--
-                              --><input id="radio3" type="radio" name="estrellas"  onclick="cantEstrellas(3)" value="3"><!--
-                              --><label for="radio3">★</label><!--
-                              --><input id="radio4" type="radio" name="estrellas"  onclick="cantEstrellas(2)" value="2"><!--
-                              --><label for="radio4">★</label><!--
-                              --><input id="radio5" type="radio" name="estrellas"  onclick="cantEstrellas(1)" value="1"><!--
-                              --><label for="radio5">★</label>
-                            </p>
-                            </form>
-                          </h3>
-                          </div>
-                          <div class="col order-5">
-                          </div>
-                        </div>
-                      </div>
+                <div class="text-center">
+                  <div>
+                    <button id="cart" type="button" class="zoom btn btn-outline-dark">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                      </svg>  Añadir al carrito
+                    </button>
+
+                    <a href="" style="background-color:black; color:white" class="zoom btn">
+                      <b>Comprar</b>
+                    </a>
                   </div>
                 </div>
               </div>
-
+            </div>
+          </div><br><hr class="my-1">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-10 "><br>
+              <h4 class="">Comentarios:</h4>              
+              <div class="">
+                <div class="border rounded-3 cont">
+                  <div class="list-group" id="contenedor"></div>
+                </div>
+                <div class="col-xs-20">
+                  <div class="row my-4">
+                    <div class="container">
+                      <label for="Item" class="form-label"><h4>Comentar</h4></label>
+                      <input type="text" class="form-control"  style="height:70px" id="item"><br>
+                      <div class="d-grid raw">
+                        <div class="col">
+                          <h3>
+                            <form id="calif">
+                              <p class="clasificacion">
+                                <a href="" class="zoom btn btn-dark" id="agregar" style="background-color:black; color:white; margin-left: 2rem;" class="btn"><b>Publicar</b></a>
+                                <input  id="radio1" type="radio" name="estrellas" onclick="cantEstrellas(5)" value="5">
+                                <label for="radio1">★</label>
+                                <input id="radio2" type="radio" name="estrellas"  onclick="cantEstrellas(4)" value="4">
+                                <label for="radio2">★</label>
+                                <input id="radio3" type="radio" name="estrellas"  onclick="cantEstrellas(3)" value="3">
+                                <label for="radio3">★</label>
+                                <input id="radio4" type="radio" name="estrellas"  onclick="cantEstrellas(2)" value="2">
+                                <label for="radio4">★</label>
+                                <input id="radio5" type="radio" name="estrellas"  onclick="cantEstrellas(1)" value="1">
+                                <label for="radio5">★</label>
+                              </p>
+                            </form>
+                          </h3>
+                        </div>
+                        <div class="col order-5"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
 
       <section class="products related-products card" style="padding: 1em; -moz-box-align: center;">
         <div class="container text-center">
@@ -204,41 +229,37 @@
               <h3>Productos relacionados</h3>
             </div>
           </div>
-
-          <div class="row" id="rela" style="margin: 1em ;">
-       
-            </div>
-            
-          </div>
+          <div class="row" id="rela" style="margin: 1em ;"></div> 
         </div>
       </section>
 
-<!----------------- Modal ---------------------->
-<div id="myModal" class="modal">
+    <div id="myModal" class="modal"> <!----------------- Modal ---------------------->
+      <span class="close">&times;</span>   <!-- Boton cerrar  -->
+      <div class="modal-content" id="img01">   <!-- Carrusel de imagenes -->
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner" id="carruselModal"></div>
 
-  <!-- Boton cerrar  -->
-  <span class="close">&times;</span>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+           <span class="visually-hidden">Previous</span>
+          </button>
 
-  <!-- Carrusel de imagenes -->
-  <div class="modal-content" id="img01">
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner" id="carruselModal">
+         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-      </div>
+    </div>
+  </main> 
+
+  <div id="busqueda">
+    <div id="spinner-wrapper">
+      <div class="lds-ring"></div>
+    </div>
   </div>
-</div>
 
-</main>
-  <div id="busqueda"></div>
-<footer class="text-muted">
+  <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
@@ -248,22 +269,11 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-
-
-
+</body>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
   <script src="js/search.js"></script>
 
-</body>
 
 </html>
