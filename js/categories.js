@@ -50,7 +50,7 @@ function showCategoriesList(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
 
             htmlContentToAppend += `
-            <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
+            <div onclick="setCatID(${category.id})" class="zoom list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
@@ -141,3 +141,22 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 });
+
+///////////////////////// Adaptacion de menu-filtros segun tamano de pantalla ///////////////////////////
+
+function mostrarFiltros(x) {
+    var filter = document.getElementById("filter");
+    var button = document.getElementById("buttonFilter");
+
+    if (x.matches) {
+        filter.classList.remove("show")
+        button.setAttribute("style", "display: hidden")
+
+    } else {
+        filter.classList.add("show")
+        button.setAttribute("style", "display: none") 
+    }
+  }
+
+mostrarFiltros(x) 
+x.addListener(mostrarFiltros)

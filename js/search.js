@@ -75,11 +75,12 @@ function busca() {
     input=input.toLowerCase();
  
     if (input.length > 0){
+
     let x = document.getElementsByClassName('list-group-item-act');
     
             var search = `
             <br>
-            <div style="color:gray; margin-left: 8rem"> 
+            <div style="color:gray; margin-left: 10%; margin-top: 3%"> 
              <h4><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
            </svg> Resultados de su busqueda: </h4></div>
@@ -91,7 +92,7 @@ function busca() {
 
         document.getElementById("busqueda").innerHTML = search;
         showProdList()
-        document.getElementById("busqueda").style.display="list-item";
+        document.getElementById("busqueda").style.display="block";
 
         document.getElementById("main").style.display="none";
 
@@ -100,11 +101,12 @@ function busca() {
             x[i].style.display="none";
         }
         else {
-            x[i].style.display="list-item";                 
+            x[i].style.display="block";                 
         }
     }}else{
+
         document.getElementById("busqueda").style.display="none";
-        document.getElementById("main").style.display="list-item";
+        document.getElementById("main").style.display="block";
 
     }
 }

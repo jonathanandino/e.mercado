@@ -1,15 +1,54 @@
-//array donde se cargarán los datos recibidos:
-let productsArray = [];
+let productsArray = []; //array donde se cargarán los datos recibidos
+let currentProductsArray = [];
 
+const ORDER_ASC_BY_NAME = "AZ";
+const ORDER_DESC_BY_NAME = "ZA";
+const ORDER_BY_PROD_COUNT = "Cant.";
+const ORDER_BY_PROD_Cash = "Ca.";
+const ORDER_ART_VEND= "Art"
+const ORDER_DESC_ART_VEND= "DesArt"
 
-function setProID(id) {
-    localStorage.setItem("ProID", id);
-    window.location = "product-info.html"
+let currentSortCriteria = undefined;
+let minCount = undefined;
+let maxCount = undefined;
+var x = window.matchMedia("(max-width: 768px)") 
+
+///////////////////////// Funciones que cargan la informacion a la pagina productos/////////////////////////////
+
+function cargarTitulo(){ // Funcion que carga el Titulo y imagen de la categoria 
+
+    document.getElementById("sortDesc").style.display="none";
+    document.getElementById("sortByCount").style.display="none";
+    document.getElementById("sortPop").style.display="none";
+    
+    fetch(CATEGORIES_URL)
+        .then(re => re.json())
+        .then(data =>{
+
+        let nData = localStorage.getItem("catID")
+        let htmlTitleProductos =`
+            <style> 
+                .prod { 
+                    background: url(`+data[nData-101].imgSrc+`);  
+                    background-color: grey;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-blend-mode: multiply;
+                    background-size: cover;
+                    height: 200px;
+                } 
+            </style>
+            <h2 style="margin-top: revert">`+data[nData-101].name+`</h2>
+            <p class="lead">`+data[nData-101].description+`</p>
+            `
+
+    document.getElementById("tituloCategoria").innerHTML = htmlTitleProductos;
+    let input = document.getElementById("Search");
+    input.placeholder = `Buscar `+data[nData-101].name+` `; // mostramos el nombre de la categoria en el placeholder
+    })
 }
-//función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
-function showProductsList(){
 
-   
+function showProductsList(){ //función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
 
     let htmlContentToAppend = "";
 
@@ -20,7 +59,7 @@ function showProductsList(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(productos.cost) <= maxCount))){
         
         htmlContentToAppend += `
-        <div class="card cursor-active list-group-item-actio" onclick="setProID(`+productos.id+`)">
+        <div class="zoom card cursor-active list-group-item-actio" onclick="setProID(`+productos.id+`)">
         <img src="`+productos.image+`" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">`+productos.name+`</h5>
@@ -34,8 +73,6 @@ function showProductsList(){
         document.getElementById("products-list-container").innerHTML = htmlContentToAppend;  
 
     } }
-
-
 
 /* 
 EJECUCIÓN:
@@ -51,64 +88,18 @@ document.addEventListener("DOMContentLoaded", function (e){
         {
             currentProducts = resultObj.data;
             currentProductsArray = currentProducts.products
-            showProductsList();  
+            showProductsList();
+            cargarTitulo()
+  
      }
     });
 });
 
-//------------------- Carga la Titulo y imagen del titulo -------------------------
 
-function cargarTitulo(){
-    document.getElementById("sortDesc").style.display="none";
-    document.getElementById("sortByCount").style.display="none";
-    document.getElementById("sortPop").style.display="none";
+////////////////////////////// Funciones de filro ///////////////////////////////////
 
-    
+function sortProducts(criteria, array){ // filro alfabetico 
 
-    
-fetch(CATEGORIES_URL)
-.then(re => re.json())
-.then(data =>{
-    let nData = localStorage.getItem("catID")
-    let htmlTitleProductos =`
-    <style> .prod { background: url(`+data[nData-101].imgSrc+`);  
-      background-color: grey;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-blend-mode: multiply;
-      background-size: cover;
-      height: 200px;} </style>
-      <h2>`+data[nData-101].name+`</h2>
-      <p class="lead">`+data[nData-101].description+`</p>
-    `
-document.getElementById("prod").innerHTML = htmlTitleProductos;
-let input = document.getElementById("Search");
-input.placeholder = `Buscar `+data[nData-101].name+` `;
-})
-}
-
-cargarTitulo()
-
-
-
-
-
-// ----------------------funcion de filro alfabetico--------------------------- 
-const ORDER_ASC_BY_NAME = "AZ";
-const ORDER_DESC_BY_NAME = "ZA";
-const ORDER_BY_PROD_COUNT = "Cant.";
-const ORDER_BY_PROD_Cash = "Ca.";
-const ORDER_ART_VEND= "Art"
-const ORDER_DESC_ART_VEND= "DesArt"
-
-
-
-let currentProductsArray = [];
-let currentSortCriteria = undefined;
-let minCount = undefined;
-let maxCount = undefined;
-
-function sortProducts(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
     {
@@ -160,15 +151,8 @@ function sortProducts(criteria, array){
             return 0;
         });
     }
-
-
-
     return result;
 }
-
-
-
-/////
 
 function sortAndShowProduct(sortCriteria, productsArray){
     currentSortCriteria = sortCriteria;
@@ -177,21 +161,13 @@ function sortAndShowProduct(sortCriteria, productsArray){
     }
 
     currentProductsArray = sortProducts(currentSortCriteria, currentProductsArray);
-
-
-    //Muestro las categorías ordenadas
-    showProductsList();
+    showProductsList();    //Muestro las categorías ordenadas
 }
-
-
-
 
     document.getElementById("sortAsc").addEventListener("click", function(){
         sortAndShowProduct(ORDER_ASC_BY_NAME);
         document.getElementById("sortAsc").style.display="none";
         document.getElementById("sortDesc").style.display="list-item";
-
-       
     });
 
     document.getElementById("sortDesc").addEventListener("click", function(){
@@ -221,23 +197,17 @@ function sortAndShowProduct(sortCriteria, productsArray){
         document.getElementById("sortPop").style.display="none";
         document.getElementById("sortMenPop").style.display="list-item";
     });
-    
-
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
 
         minCount = undefined;
         maxCount = undefined;
-
         showProductsList();
     });
-
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
-        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-        //de productos por categoría.
-        minCount = document.getElementById("rangeFilterCountMin").value;
-        maxCount = document.getElementById("rangeFilterCountMax").value;
+        minCount = document.getElementById("rangeFilterCountMin").value;  //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
+        maxCount = document.getElementById("rangeFilterCountMax").value; //de productos por categoría.
 
         if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
             minCount = parseInt(minCount);
@@ -255,11 +225,8 @@ function sortAndShowProduct(sortCriteria, productsArray){
 
         showProductsList();
     });
-
-
-
-    //------------------buscador-------------------------
-
+    
+///////////////////////////////// Filtro por busqueda //////////////////////////////////
 
 function buscador() {
     let inp = document.getElementById("Search").value
@@ -275,3 +242,30 @@ function buscador() {
         }
     }
 }
+
+///////////////////////// Adaptacion de menu-filtros segun tamano de pantalla ///////////////////////////
+
+function mostrarFiltros(x) {
+    var div1 = document.getElementById("filterIn");
+    var div2 = document.getElementById("filterEx");
+    var imput = document.getElementById("searchImput");
+    var filter = document.getElementById("filter");
+    var button = document.getElementById("buttonFilter");
+    var formato = document.getElementById("colapsed");
+
+    if (x.matches) {
+        div2.appendChild(imput);
+        filter.classList.remove("show")
+        formato.classList.add("navbar-nav")        
+        button.setAttribute("style", "display: hidden")
+
+    } else {
+        div1.appendChild(imput);
+        filter.classList.add("show")
+        formato.classList.remove("navbar-nav")        
+        button.setAttribute("style", "display: none") 
+    }
+  }
+
+mostrarFiltros(x) 
+x.addListener(mostrarFiltros)
