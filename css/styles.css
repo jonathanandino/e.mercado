@@ -379,7 +379,7 @@ transition: all 1.2s;
   color: white;
 }
 
-@media (max-width: 768px){
+@media (max-width: 991px){
   #navbar{
     background-color: black;
     position: initial;
@@ -396,7 +396,7 @@ transition: all 1.2s;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 991px) {
   #navbar{
     height: 50px;
   }
@@ -415,7 +415,7 @@ transition: all 1.2s;
 
 /*filtros */
 
-@media (max-width: 768px){
+@media (max-width: 991px){
   #navbar{
     background-color: black;
     position: initial;
@@ -432,7 +432,7 @@ transition: all 1.2s;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 991px) {
   #navbar{
     height: 50px;
     flex-wrap: wrap;
