@@ -12,7 +12,7 @@
 </head>
 
 <body onload="cargarInicio()">
-  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark p-1" style="background-color:#000; position: inherit">
+  <nav id="navbar" class="navbar-expand-lg navbar-dark p-1" style="position: inherit; background-color: black;">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -36,9 +36,7 @@
             <a class="zoom nav-link" href="sell.html">Vender</a>
           </li>
 
-          <li  style="width:auto;"></li>
-
-          <li class="nav-item">
+          <li class="nav-item itemBuscar">
             <div class="col row" role="search">
               <div class="col-md-10 form-outline">
                 <input class="zoom form-control me-2 col" id="searches" onkeyup="busca()" placeholder="Buscar" aria-label="Search">
@@ -48,18 +46,15 @@
             </div>
           </li>
 
-          <li  style="width:50px;"></li>
-          <div class="btn-group row">
-            
-            <div class="row" data-bs-toggle="dropdown" style="margin-top: 2%;">
-              <div class="col-1 zoom" id="picture"></div>
-              <div id="usuarioMg" value="1" style="margin-top: 2%;" class="col-10"></div>
-            </div>
+          <div class="row" data-bs-toggle="dropdown" style="margin-top: 0,5%;">
+            <div class="col-1" id="picture"></div>
+            <div id="usuarioMg" value="1" style="margin-top: 2%;" class="col-10"></div>
+          </div>
 
-            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" style="opacity: 0.7; width: 500px; background-color: black; color: white;">
-              <div id="usuarioLg">
-                <li class="usuario"style="margin-left: 1em;" id="usuario"></li> 
-              </div>
+          <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+            <div id="usuarioLg">
+              <li class="usuario"style="margin-left: 1em;" id="usuario"></li> 
+            </div>
 
               <li>
                 <hr class="dropdown-divider">
@@ -89,13 +84,13 @@
                 </a>
               </li>                  
             </ul>
-          </div>
+          
         </ul>
       </div>
     </div>
   </nav>
   
-  <main>
+  <main id="main">
     <div class="container" style="max-width: 800px;margin: auto">
       <div style="margin-block: 20px;">
         <h2>
@@ -142,6 +137,12 @@
     </div>
   </main>
 
+  <div id="busqueda">
+    <div id="spinner-wrapper">
+      <div class="lds-ring"></div>
+    </div>
+  </div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -152,14 +153,10 @@
     </div>
   </footer>
 
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-    </div>
-  </div>
-
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/search.js"></script>
 </body>
 
 </html>
