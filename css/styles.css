@@ -408,7 +408,7 @@ margin-right: 20px;
   .dropdown-menu-end{
     width: 100%;
     opacity: 1; 
-
+  }
 }
 
 @media (min-width: 991px) {
@@ -416,16 +416,17 @@ margin-right: 20px;
     height: 50px;
   }
 }
+
 /* notificacion numerica */
 
 .badge {
   z-index: 990;
-  position: absolute;
-  top: 40px;
-  border-radius: 50%;
-  background: red;
+  position: absolute ;
+  top: 40px ;
+  border-radius: 50% ;
+  background: red ;
   color: white;
-}
+} 
 
 /*filtros */
 
