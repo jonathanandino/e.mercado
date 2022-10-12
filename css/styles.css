@@ -354,7 +354,7 @@ color: #fff;
   transition: all, 1.2s;
 }
 .form-outline .searchEffectInit{
-  width: 150%;
+  width: 130%;
   position: relative;
   background-color: transparent ;
   transition: all 1.2s ;
@@ -378,7 +378,18 @@ transition: all 1.2s;
 .nav-item{
   color: white;
 }
-
+.dropdown-menu-end{
+  width: auto;
+  background-color: black ;
+  color: white ;
+  opacity: 0.7; 
+}
+.itemBuscar{
+margin-right: 20px;
+}
+#usuarioLg{
+  margin: 5px;
+}
 @media (max-width: 991px){
   #navbar{
     background-color: black;
@@ -394,6 +405,10 @@ transition: all 1.2s;
   #search-addon{
     width: 15% !important;
   }
+  .dropdown-menu-end{
+    width: 100%;
+    opacity: 1; 
+
 }
 
 @media (min-width: 991px) {
@@ -401,7 +416,6 @@ transition: all 1.2s;
     height: 50px;
   }
 }
-
 /* notificacion numerica */
 
 .badge {
