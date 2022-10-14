@@ -106,7 +106,8 @@ window.addEventListener('load', function(){ // Funcion que escribe la informacio
         })
 
    btnNuevoComent.addEventListener("click", function () {    // Carga el comentario al Array
-        
+        let estrella = document.querySelector('input[name="estrellas"]:checked').value;
+
         var today = new Date();  // Nos da la fecha y hora 
         var fecha = today.toISOString().split('T')[0] +" "+ today.toLocaleTimeString(); //anno - mes - dia - hora
        
