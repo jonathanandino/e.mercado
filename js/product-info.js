@@ -210,7 +210,7 @@ document.getElementById("cart").addEventListener("click", function(){
         cart = cartLocal;
     }
 
-    cart.push({ id: localStorage.getItem("ProID"), name: productData.name, count: cant, unitCost: productData.cost, currency: productData.currency, image: productData.images[0]});
+    cart.push({ id: parseInt(localStorage.getItem("ProID")), name: productData.name, count: parseInt(cant), unitCost: productData.cost, currency: productData.currency, image: productData.images[0]});
     localStorage.setItem("cart", JSON.stringify(cart));
 
 })
