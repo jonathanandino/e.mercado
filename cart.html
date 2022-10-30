@@ -91,8 +91,10 @@
   </nav>
   
   <main id="main">
-    <div class="container" style="max-width: 800px;margin: auto">
-      <div style="margin-block: 20px;">
+    <div id="avisoRemovido" class="alert alert-danger d-none text-center" role="alert" style="z-index: 999;">El articulo se ha removido de "Mi carrito"</div>
+    <div id="avisoCompra" class="alert alert-success d-none text-center" role="alert" style="z-index: 999;">¡Has comprado con éxito!</div>
+    <div class="container row col-lg-12 mt-4" style="margin: auto">
+      <div>
         <h2>
           <svg xmlns="http://www.w3.org/2000/svg" style="color: black; margin: 0px" width="35" height="35" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
@@ -100,41 +102,202 @@
         </h2>
       </div><hr>
 
-      <div id="cart"></div><hr>
-      <div class="row" >
-        <div class="col-md-4" style="padding: 30px;">
-          <h5>Tipo de envió</h5>
+      <div  class="col-lg-8" id="cart"></div><hr class="d-lg-none">
+
+    <form class="col-lg-4 needs-validation" id="formulario" novalidate onchange="total()">
+
+      <div class="form-check m-3" >
+        <label class="form-check-label row" for="calle" id="infoEnvio" type="radio" name="envio" value="5"data-bs-toggle="collapse" data-bs-target="#tipoDeEnvio" aria-expanded="false" aria-controls="tipoDeEnvio">
+          <div class="row">
+            <h5 class="col-7">Datos de envió</h5>
+            <p class="col-5 text-secondary text-end fw-bold p-0"><em id="envioVisible">Premium</em>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
+                <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+              </svg>
+            </p>
+          </div>
+
+          <P class="m-0" id="direccionVisible">Introducir una dirección de envió</P>
+     
+        </label>
+      </div>
+      <div class="collapse row" id="tipoDeEnvio">
+        <div class="col-lg-12 col-md-4  p-3">
+          <h5 class="col-7">Tipo de envió</h5>
+
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">Premium 2 a 5 días (15%) </label>
+            <input class="form-check-input" type="radio" name="envio" value="0">
+            <label class="form-check-label" for="flexRadioDefault1"><strong>Premium</strong><samp class="text-break"> de 2 a 5 días</samp> (15%) </label>
           </div>
 
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-            <label class="form-check-label" for="flexRadioDefault2">Express 5 a 8 días (7%)</label>
+            <input class="form-check-input" type="radio" name="envio" value="1">
+            <label class="form-check-label" for="flexRadioDefault2"><strong>Express</strong><samp class="text-wraptext-break"> de 5 a 8 días</samp> (7%)</label>
           </div>
 
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
-            <label class="form-check-label" for="flexRadioDefault3">Standar 12 a 15 días (5%)</label>
+            <input class="form-check-input" type="radio" name="envio" value="2" checked>
+            <label class="form-check-label" for="flexRadioDefault3"><strong>Standar </strong><samp class="text-wraptext-break">de 12 a 15 días</samp> (5%)</label>
           </div>
         </div>
 
-        <div class="col-md-8" style="background-color: aliceblue;padding: 30px;">  
+        <div class="col-lg-12 col-md-8 needs-validation" style="background-color: aliceblue;padding: 30px;">  
           <h5>Dirección de envió</h5>
+
           <div class="row">
             <div class="col-md-8">
-              <input type="text" class="form-control" placeholder="Calle" aria-label="First name"><br>
-              <input type="text" class="form-control" placeholder="Esquina" aria-label="First name">
+              <input type="text" id="calle" class="form-control " placeholder="Calle" aria-label="Calle" required="">
+              <div class="invalid-feedback">
+                Introducir una dirección.
+              </div>
+            </div>
+  
+            <div class="col">
+              <input type="text" id="numero" class="form-control" placeholder="Numero" aria-label="Num." required>
+              <div class="invalid-feedback">
+                *obligatorio
+              </div>
             </div>
 
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Numero" aria-label="Last name">
+            <div class="row col-md-10 mt-4">
+              <input type="text" class="form-control" placeholder="Esquina" aria-label="Esquina" required>
+              <div class="invalid-feedback ">
+                Campo Obligatorio.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><hr>
+    
+      <div  class="card " style="margin: auto" id="cardPago" >
+        <div class="row g-0">
+          <div class="col-12">
+            <div class="card-body row">
+              <div class="col-10">
+                <h5  class="cursor-active card-title">Método de pago</h5>
+              </div>
+              <div class="col-2 text-secondary" style="align-items:right" id="pagoIcono">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/>
+                  <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"/>
+                  <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z"/>
+                  <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="row ms-2" id="pagoVisible">
+              <p> <a href="" data-bs-toggle="modal" data-bs-target="#formularioModal" >Seleccionar</a> método de pago</p>
+            </div> 
+          </div>
+        </div>
+      </div>
+
+      <div  class="card mt-4" style="max-width: 800px;margin: auto; color:gray;">
+        <div class="row g-0">
+          <div class="col-6">
+            <div class="card-body">
+              <p  class="cursor-active card-title">Subtotal</p>
+            </div> 
+          </div>
+          <div class="col-6" >                
+            <div style="float: right; margin-block: 14px;">
+              <p class="m-1"  id="subTotal"></p>
+            </div>    
+          </div>
+        </div>
+      </div>
+
+      <div  class="card" style="max-width: 800px;margin: auto; color:gray;">
+        <div class="row g-0">
+          <div class="col-6">
+            <div class="card-body">
+              <p  class="cursor-active card-title">Costo de envío</p>
+            </div> 
+          </div>
+          <div class="col-6" >                
+            <div style="float: right; margin-block: 14px; ">
+              <p class="m-1" id="costoDeEnvio" ></p>
+            </div>    
+          </div>
+        </div>
+      </div>
+
+      <div  class="card" style="max-width: 800px;margin: auto">
+        <div class="row g-0 " >
+          <div class="col-6">
+            <div class="card-body">
+              <h4  class="cursor-active card-title"><strong>Total</strong></h4>
+            </div> 
+          </div>
+          <div class="col-6" >                
+            <div style="float: right; margin-block: 14px;">
+              <h5 class="m-1"><strong id="total"></strong></h5>
+            </div>    
+          </div>
+        </div>
+      </div>
+      <button type="submit" style="background-color:black; color:white " class="zoom btn col-lg-12">
+        <h5><b>Comprar</b></h5>
+      </button>
+    </form>
+
+    <!--Modal-->
+    <form onchange="aplicarMetodoDePago()" class="modal fade needs-validation" id="formularioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" novalidate>
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div>
+            <div class="modal-header modal-md">
+              <h5 class="modal-title" id="exampleModalLabel">Forma de pago</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div>
+                <div class="form-check m-3 form-check-inline">
+                  <input class="form-check-input" id="checkedTarjeta" type="radio" name="checkedPago" value="1"  data-bs-toggle="collapse" data-bs-target="#tarjetaDeCredito" aria-expanded="false" aria-controls="tarjetaDeCredito">
+                  <label class="form-check-label" for="checkedTarjeta" >Tarjeta de crédito</label>
+                </div>
+                <div class="collapse" id="tarjetaDeCredito">
+                <div class="card card-body">
+                <div class="row">
+                <div class="mb-3 col-6">
+                  <label for="numeroDeTarjeta" class="col form-label">Número de tarjeta</label>
+                  <input type="text" class="form-control" id="numeroDeTarjeta" required>
+                </div>
+
+                <div class="mb-3 col-3">
+                  <label for="codigoDeSeguridad" class="col form-label"  >código de seg.</label>
+                  <input type="text" class="form-control"  id="codigoDeSeguridad" required >
+                </div>
+              </div>
+  
+              <div class="mb-3 col-3">
+                <label for="Vencimiento" class="col form-label">Vencimiento (MM/AA)</label>
+                <input type="text" class="form-control" id="Vencimiento" required >
+              </div>
+            </div>
+          </div>
+  
+          <div class="form-check m-3" >
+            <input class="form-check-input" id="checkedCuenta" type="radio" name="checkedPago" value="2"data-bs-toggle="collapse" data-bs-target="#OpTransferencia" aria-expanded="false" aria-controls="collapseExample">
+            <label class="form-check-label" for="checkedCuenta"> Transferencia bancaria</label>
+          </div>
+          <div class="collapse" id="OpTransferencia">
+            <div class="card card-body">
+              <div class="mb-3 col-5">
+                <label for="OpTransferencia" class="col-form-label">Número de cuenta</label>
+                <input type="text" class="form-control" id="numeroDeCuenta" required>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </form>
+
+
   </main>
 
   <div id="busqueda">
