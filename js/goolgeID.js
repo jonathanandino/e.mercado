@@ -1,8 +1,8 @@
-// funcion para obtener respuesta
-        function handleCredentialResponse(response) {
+// función para obtener respuesta
+            function handleCredentialResponse(response) {
             const responsePayload = decodeJwtResponse(response.credential);
             user = [];
-            user.push({name:responsePayload.name, picture:responsePayload.picture});
+            user.push({name:responsePayload.name, givenName:responsePayload.given_name, lastName:responsePayload.family_name, picture:responsePayload.picture, email:responsePayload.email });
             localStorage.setItem("usuario", JSON.stringify(user));
             window.open("index.html","_self");
 
