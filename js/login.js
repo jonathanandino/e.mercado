@@ -7,7 +7,7 @@ function comprobarValores() {
     var impUsuario = document.getElementById("floatingInput");
     var impContrasena = document.getElementById("floatingPassword")
 
-// Funcion que activa el mensaje de alerta 
+// función que activa el mensaje de alerta 
     function error(mensaje){
         document.getElementById("mensaje").innerHTML= mensaje;
 
@@ -19,10 +19,10 @@ function comprobarValores() {
 
     }
 
-    // Verificador de campos vacios
+    // Verificador de campos vacíos
     if(usuario.length > 0 && contra.length > 0){    
 
-        // Verifica que exista un correo electronico
+        // Verifica que exista un correo electrónico
         emailCheck = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         if (emailCheck.test(usuario)){  
 
@@ -31,11 +31,12 @@ function comprobarValores() {
         var email_analizado = /^([^]+)@(\w+).(\w+)$/.exec(usuario);
         var [,nombre,servidor,dominio] = email_analizado;
         user = [];
-        user.push({name:nombre});
+        user.push({name:nombre, givenName:nombre, email:usuario });
+
         localStorage.setItem("usuario", JSON.stringify(user));
         window.location.href = "index.html"
 
-        // Si no existe correo electronico muestra la alerta de error
+        // Si no existe correo electrónico muestra la alerta de error
         }else{
             error("Introduzca un <strong>Correo electrónico</strong> valido");
             impContrasena.classList.remove("alert-danger");
@@ -43,13 +44,13 @@ function comprobarValores() {
 
         }
 
-        // Verifica que el imput de correo no este vacio 
+        // Verifica que el imput de correo no este vacío  
     }else if(usuario.length > 0){
         error("Introduzca un <strong>contraseña</strong>");
         impUsuario.classList.remove("alert-danger");
         impUsuario.classList.remove("border-danger");
 
-        // Verifica que el imput de contrasenna no este vacio 
+        // Verifica que el imput de contrasena no este vacío  
     }else if(contra.length > 0){
         error("Introduzca un <strong>Correo electrónico</strong>");
         impContrasena.classList.remove("alert-danger");
