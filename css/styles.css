@@ -341,6 +341,23 @@ color: #fff;
   font-size: 16px;
 }
 
+.icono{
+  color: white; 
+  margin: 0px
+}
+.icono-dark{
+  color: black; 
+  margin: 0px
+
+}
+.z-index-99{
+  z-index: 999
+}
+.button-black{
+  background-color:black; 
+  color:white
+}
+
 /* ///// Configuracion de la navbar ///// */
 .navbar1{
   background-color: black !important; 
@@ -352,6 +369,14 @@ color: #fff;
   position: fixed;
   width: 100%; 
   transition: all, 1.2s;
+}
+.navbar-black{
+  background-color:#000 !important;
+  position: relative !important
+}
+
+.logo-navbar{
+  height: 40px
 }
 .form-outline .searchEffectInit{
   width: 130%;
@@ -452,4 +477,75 @@ margin-right: 20px;
     height: 50px;
     flex-wrap: wrap;
   }
+}
+
+.invalid{
+  color:red;
+  border-color: red;
+}
+
+
+/* Seleccion de imagen Perfil */
+
+.cont-img-perfil{
+  position: relative;
+  width: 50%;
+  width: 170px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color:black;
+  border-radius: 50%
+}
+
+.cont-img-perfil:hover .overlay {
+  opacity: 0.7;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+#image{
+  width: 170px;
+    height: 170px;
+    overflow: hidden;
+    margin: 10px;
+    position: relative;
+}
+
+.perfil{
+  position:absolute;
+    height: 100%;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%
 }
