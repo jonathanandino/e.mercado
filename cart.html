@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -12,18 +12,18 @@
 </head>
 
 <body onload="cargarInicio()">
-  <nav id="navbar" class="navbar-expand-lg navbar-dark p-1" style="position: inherit; background-color: black;">
+  <nav id="navbar" class="navbar-expand-lg navbar-dark navbar-black p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
+        <div class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
             <div class="zoom"> 
               <a class="" href="index.html">
-                <img src="img/logo-dark.png" style="height: 40px">
+                <img src="img/logo-dark.png" class="logo-navbar" alt="inicio">
               </a>
             </div>
           </li>
@@ -42,18 +42,18 @@
                 <input class="zoom form-control me-2 col" id="searches" onkeyup="busca()" placeholder="Buscar" aria-label="Search">
               </div> 
                 <span class="col row " id="search-addon">
-                <button class="zoom btn col row" id="search" style="align-items: center;" type="submit"> <i class="fas fa-search"></i></button>
+                <div class="zoom btn col row align-items-center" id="search" type="submit" alt="Buscar en e-mercado"><i class="fas fa-search"></i></div>
             </div>
           </li>
 
-          <div class="row" data-bs-toggle="dropdown" style="margin-top: 0,5%;">
+          <div class="row mt-1" data-bs-toggle="dropdown">
             <div class="col-1" id="picture"></div>
-            <div id="usuarioMg" value="1" style="margin-top: 2%;" class="col-10"></div>
+            <div id="usuarioMg" value="1" class="col-10 mt-4"></div>
           </div>
 
           <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
             <div id="usuarioLg">
-              <li class="usuario"style="margin-left: 1em;" id="usuario"></li> 
+              <li class="usuario m-2" id="usuario"></li> 
             </div>
 
               <li>
@@ -62,7 +62,7 @@
 
               <li>
                 <a class="btn btn-dark dropdown-item" href="my-profile.html">
-                  <svg xmlns="http://www.w3.org/2000/svg" style="color: white; margin: 0px" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 448 512">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart3 icono" viewBox="0 0 448 512">
                     <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>                      
                   </svg> Mi perfil
                 </a>
@@ -70,7 +70,7 @@
 
               <li>
                 <a class="btn btn-dark dropdown-item" href="cart.html">
-                  <svg xmlns="http://www.w3.org/2000/svg" style="color: white; margin: 0px" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart3 icono" viewBox="0 0 16 16">
                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                   </svg> Mi carrito<span id="miCarrito"></span>
                 </a>
@@ -78,25 +78,25 @@
 
               <li>
                 <a class="btn dropdown-item" onclick="salirUsuario()" >        
-                  <svg xmlns="http://www.w3.org/2000/svg" style="color: white; margin: 0px" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 576 512">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart3 icono" viewBox="0 0 576 512">
                     <path d="M534.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L434.7 224 224 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM192 96c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-53 0-96 43-96 96l0 256c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>         
                   </svg>  Cerrar sesión
                 </a>
               </li>                  
             </ul>
           
-        </ul>
+          </div>
       </div>
     </div>
   </nav>
   
   <main id="main">
-    <div id="avisoRemovido" class="alert alert-danger d-none text-center" role="alert" style="z-index: 999;">El articulo se ha removido de "Mi carrito"</div>
-    <div id="avisoCompra" class="alert alert-success d-none text-center" role="alert" style="z-index: 999;">¡Has comprado con éxito!</div>
-    <div class="container row col-lg-12 mt-4" style="margin: auto">
+    <div id="avisoRemovido" class="alert alert-danger d-none text-center z-index-99" role="alert">El articulo se ha removido de "Mi carrito"</div>
+    <div id="avisoCompra" class="alert alert-success d-none text-center  z-index-99" role="alert">¡Has comprado con éxito!</div>
+    <div class="container row col-lg-12 mt-4 mx-auto">
       <div>
         <h2>
-          <svg xmlns="http://www.w3.org/2000/svg" style="color: black; margin: 0px" width="35" height="35" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-cart3 icono-dark" viewBox="0 0 16 16">
             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
           </svg> Mi Carrito 
         </h2>
@@ -107,7 +107,7 @@
     <form class="col-lg-4 needs-validation" id="formulario" novalidate onchange="total()">
 
       <div class="form-check m-3" >
-        <label class="form-check-label row" for="calle" id="infoEnvio" type="radio" name="envio" value="5"data-bs-toggle="collapse" data-bs-target="#tipoDeEnvio" aria-expanded="false" aria-controls="tipoDeEnvio">
+        <label class="form-check-label row" for="calle" id="infoEnvio" type="radio" name="envio" value="5"data-bs-toggle="collapse" data-bs-target="#tipoDeEnvio" aria-controls="tipoDeEnvio">
           <div class="row">
             <h5 class="col-7">Datos de envió</h5>
             <p class="col-5 text-secondary text-end fw-bold p-0"><em id="envioVisible">Premium</em>
@@ -126,22 +126,22 @@
           <h5 class="col-7">Tipo de envió</h5>
 
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="envio" value="0">
-            <label class="form-check-label" for="flexRadioDefault1"><strong>Premium</strong><samp class="text-break"> de 2 a 5 días</samp> (15%) </label>
+            <input class="form-check-input" type="radio" name="envio" value="0" alt="Envio Premium" placeholder="Envio Premium">
+            <label class="form-check-label" for="flexRadioDefault1" ><strong>Premium</strong><samp class="text-break"> de 2 a 5 días</samp> (15%) </label>
           </div>
 
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="envio" value="1">
+            <input class="form-check-input" type="radio" name="envio" value="1" alt="Envio Express" placeholder="Envio Express">
             <label class="form-check-label" for="flexRadioDefault2"><strong>Express</strong><samp class="text-wraptext-break"> de 5 a 8 días</samp> (7%)</label>
           </div>
 
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="envio" value="2" checked>
+            <input class="form-check-input" type="radio" name="envio" value="2" alt="Envio Standar" placeholder="Envio Standar" checked>
             <label class="form-check-label" for="flexRadioDefault3"><strong>Standar </strong><samp class="text-wraptext-break">de 12 a 15 días</samp> (5%)</label>
           </div>
         </div>
 
-        <div class="col-lg-12 col-md-8 needs-validation" style="background-color: aliceblue;padding: 30px;">  
+        <div class="col-lg-12 col-md-8 needs-validation p-4" style="background-color: aliceblue">  
           <h5>Dirección de envió</h5>
 
           <div class="row">
@@ -169,14 +169,14 @@
         </div>
       </div><hr>
     
-      <div  class="card " style="margin: auto" id="cardPago" >
+      <div  class="card mx-auto" id="cardPago" >
         <div class="row g-0">
           <div class="col-12">
             <div class="card-body row">
               <div class="col-10">
                 <h5  class="cursor-active card-title">Método de pago</h5>
               </div>
-              <div class="col-2 text-secondary" style="align-items:right" id="pagoIcono">
+              <div class="col-2 text-secondary align-items-end" id="pagoIcono">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/>
                   <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"/>
@@ -192,7 +192,7 @@
         </div>
       </div>
 
-      <div  class="card mt-4" style="max-width: 800px;margin: auto; color:gray;">
+      <div  class="card mt-4 mx-auto" style="max-width: 800px; color:gray;">
         <div class="row g-0">
           <div class="col-6">
             <div class="card-body">
@@ -207,7 +207,7 @@
         </div>
       </div>
 
-      <div  class="card" style="max-width: 800px;margin: auto; color:gray;">
+      <div  class="card mx-auto" style="max-width: 800px; color:gray;">
         <div class="row g-0">
           <div class="col-6">
             <div class="card-body">
@@ -222,7 +222,7 @@
         </div>
       </div>
 
-      <div  class="card" style="max-width: 800px;margin: auto">
+      <div  class="card mx-auto" style="max-width: 800px">
         <div class="row g-0 " >
           <div class="col-6">
             <div class="card-body">
@@ -236,7 +236,7 @@
           </div>
         </div>
       </div>
-      <button type="submit" style="background-color:black; color:white " class="zoom btn col-lg-12">
+      <button type="submit" class="zoom btn col-lg-12 button-black">
         <h5><b>Comprar</b></h5>
       </button>
     </form>
@@ -311,7 +311,7 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -2022</p>
+      <p>Este sitio forma parte de <a rel="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -2022</p>
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
